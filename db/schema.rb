@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_19_080300) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_04_132924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -166,6 +166,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_19_080300) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["developer_id"], name: "index_developers_celebration_package_requests_on_developer_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "business_id", null: false
+    t.bigint "developer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id", "developer_id"], name: "index_favorites_on_business_id_and_developer_id", unique: true
+    t.index ["business_id"], name: "index_favorites_on_business_id"
+    t.index ["developer_id"], name: "index_favorites_on_developer_id"
   end
 
   create_table "hiring_agreements_signatures", force: :cascade do |t|
@@ -472,6 +482,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_19_080300) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "businesses_hiring_invoice_requests", "businesses"
   add_foreign_key "developers_celebration_package_requests", "developers"
+  add_foreign_key "favorites", "businesses"
+  add_foreign_key "favorites", "developers"
   add_foreign_key "hiring_agreements_signatures", "hiring_agreements_terms"
   add_foreign_key "hiring_agreements_signatures", "users"
   add_foreign_key "notification_tokens", "users"

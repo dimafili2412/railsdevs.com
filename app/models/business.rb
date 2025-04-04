@@ -9,6 +9,8 @@ class Business < ApplicationRecord
   belongs_to :user
   has_one :referring_user, through: :user
   has_many :conversations, -> { visible }
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_developers, through: :favorites, source: :developer
 
   has_noticed_notifications
 
