@@ -30,6 +30,8 @@ class Developer < ApplicationRecord
   has_one :role_level, dependent: :destroy, autosave: true
   has_one :role_type, dependent: :destroy, autosave: true
   has_one_attached :cover_image
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_by_businesses, through: :favorites, source: :business
 
   has_noticed_notifications
 

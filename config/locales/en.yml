@@ -532,6 +532,13 @@ en:
       share: Share
     update:
       updated: Your profile was updated!
+    favorite_developers:
+      title: "Favorite Developers"
+      description: "Developers you've marked as favorites."
+      subtitle: "Browse your saved developers"
+      empty_state:
+        title: "No favorites yet"
+        body: "Mark developers as favorites to easily find them here later."
   dir: ltr
   errors:
     business_blank: Fill out your business profile to message developers.
@@ -602,6 +609,7 @@ en:
       developers: Developers
       home: Home
       pricing: Pricing
+      favorite_developers: "Favorite Developers"
     guest_component:
       register: Register
       sign_in: Sign in
@@ -629,6 +637,7 @@ en:
       users: Users
       view_conversations: View conversations
       view_notifications: View notifications
+      favorite_developers: "Favorite Developers"
   notifications:
     admin:
       affiliates:

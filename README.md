@@ -1,3 +1,25 @@
+## Task Description (CodeMonkey)
+
+### Feature: Business Favorites System
+
+Implement a feature that allows business users to:
+
+1. Mark developers as favorites  
+2. View their collection of favorite developers  
+3. Remove developers from their favorites list  
+
+
+## Done, forked the repo and implemented the feature:
+
+1. Join table business to developer
+2. Favorite button wiht SVG
+3. Favorites view
+
+## Side notes:
+
+1st time ever working with both Ruby :) Was actually quite fun.
+
+
 # RailsDevs
 
 The reverse job board for Rails developers.

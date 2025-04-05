@@ -20,7 +20,6 @@ Rails.application.routes.draw do
       resources :hiring_invoice_requests, only: [:new, :create]
     end
 
-    # /notifications/read must come before /notifications/:id.
     resources :read_notifications, only: [:index, :create], path: "/notifications/read"
     resources :notifications, only: %i[index show]
 
@@ -36,6 +35,14 @@ Rails.application.routes.draw do
     resources :developers, except: :destroy do
       resources :messages, only: %i[new create], controller: :cold_messages
       resources :public_profiles, only: :new
+
+      resource :favorite, only: [] do
+        post :toggle, on: :collection
+      end
+
+      collection do
+        get :favorite_developers
+      end
     end
 
     namespace :developers do
@@ -113,7 +120,7 @@ Rails.application.routes.draw do
     resources :referrals, only: :index
   end
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resource :auth, only: [:create, :destroy]
       resources :notification_tokens, only: :create
