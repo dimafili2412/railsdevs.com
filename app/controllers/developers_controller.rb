@@ -56,6 +56,10 @@ class DevelopersController < ApplicationController
     authorize @developer
   end
 
+  def favorite_developers
+    @developers = current_user.business.favorite_developers.visible.includes(:specialties, :location, avatar_attachment: :blob)
+  end
+
   private
 
   def pundit_params_for(_record)
@@ -92,5 +96,9 @@ class DevelopersController < ApplicationController
       role_type_attributes: RoleType::TYPES,
       role_level_attributes: RoleLevel::TYPES
     ).merge(user_initiated: true)
+  end
+
+  def require_business!
+    redirect_to new_business_path unless current_user.business.present?
   end
 end

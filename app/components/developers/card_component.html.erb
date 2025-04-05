@@ -1,5 +1,5 @@
 <%= tag.div class: "relative border-b border-gray-100" do %>
-  <div class="absolute top-0 left-0 z-10 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
+  <div class="absolute top-0 left-2 z-10 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
     <div id="favorite-heart-<%= developer.id %>">
       <%= render Developers::FavoriteHeartComponent.new(developer: developer, business: current_user&.business) %>
     </div>
