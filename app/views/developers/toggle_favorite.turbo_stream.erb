@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "favorite-heart-#{@developer.id}" do %>
+  <%= render Developers::FavoriteHeartComponent.new(
+        developer: @developer,
+        business: current_user.business
+      ) %>
+<% end %>

@@ -2,14 +2,14 @@ module Developers
   class CardComponent < ApplicationComponent
     with_collection_parameter :developer
 
-    delegate :featured?, to: :developer
-    delegate :source_contributor?, to: :developer
+    delegate :featured?, :source_contributor?, to: :developer
 
-    private attr_reader :developer, :highlight_featured
+    private attr_reader :developer, :highlight_featured, :current_user
 
-    def initialize(developer:, highlight_featured: false)
+    def initialize(developer:, highlight_featured: false, current_user: nil)
       @developer = developer
       @highlight_featured = highlight_featured
+      @current_user = current_user
     end
 
     def hero

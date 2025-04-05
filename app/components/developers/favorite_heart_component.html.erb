@@ -1,0 +1,5 @@
+<div id="favorite-heart-<%= @developer.id %>">
+  <%= button_to toggle_path, method: :post, remote: true, class: "inline-flex items-center" do %>
+    <%= inline_svg_tag heart_icon, class: heart_classes, alt: "Favorite" %>
+  <% end %>
+</div>

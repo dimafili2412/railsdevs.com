@@ -4,17 +4,16 @@ class FavoritesController < ApplicationController
 
   def toggle
     @developer = Developer.find_by_hashid!(params[:developer_id])
-    if Favorite.favorited?(current_user.business, @developer)
-      Favorite.unfavorite!(current_user.business, @developer)
-    else
+  
+    Favorite.favorited?(current_user.business, @developer) ?
+      Favorite.unfavorite!(current_user.business, @developer) :
       Favorite.favorite!(current_user.business, @developer)
-    end
-
+  
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream { render "developers/toggle_favorite" }
       format.html { redirect_back fallback_location: developers_path }
     end
-  end
+  end  
 
   private
 
